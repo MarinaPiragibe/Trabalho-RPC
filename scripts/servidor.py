@@ -3,11 +3,12 @@ import rpyc
 class MyService(rpyc.Service):
 
     def on_connect(self, conn):
-        # código que é executado quando uma conexão é iniciada, caso seja necessário
-        pass
+        print("Você está conectado ao Servidor!")
+
     def on_disconnect(self, conn):
-    # código que é executado quando uma conexão é finalizada, caso seja necessário
-        pass
+        print("Você perdeu a conexão com o Servidor...")
+
+
     def exposed_get_answer(self): # este é um método exposto
         return 42
     
@@ -15,6 +16,9 @@ class MyService(rpyc.Service):
     
     def get_question(self): # este método não é exposto
         return "Qual é a cor do cavalo branco de Napoleão?"
+    
+    def exposed_vectorSum(self, vector):
+        return sum(vector)
 
 #Para iniciar o servidor
 if __name__ == "__main__":
