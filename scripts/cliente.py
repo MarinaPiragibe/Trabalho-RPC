@@ -10,7 +10,7 @@ def criaVetor ():
     vetor = []
     
     for i in range(tamanho):
-        vetor.append(randint(0, tamanho))
+        vetor.append(randint(0, tamanho-1))
     return vetor
 
 
