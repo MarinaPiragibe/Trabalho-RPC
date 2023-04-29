@@ -2,6 +2,8 @@ import rpyc
 import sys
 from random import randint
 
+# Comentário para testar push do git 
+
 def criaVetor ():
 
     tamanho = int(input('Insira o tamanho do vetor: '))
