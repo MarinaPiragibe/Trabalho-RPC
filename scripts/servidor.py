@@ -1,12 +1,13 @@
+import time
 import rpyc
 
 class MyService(rpyc.Service):
 
     def on_connect(self, conn):
-        print("Você está conectado ao Servidor!")
+        print("Cliente conectado ao Servidor!")
 
     def on_disconnect(self, conn):
-        print("Você perdeu a conexão com o Servidor...")
+        print("Cliente perdeu a conexão com o Servidor...\n")
 
 
     def exposed_get_answer(self): # este é um método exposto
@@ -18,7 +19,16 @@ class MyService(rpyc.Service):
         return "Qual é a cor do cavalo branco de Napoleão?"
     
     def exposed_vectorSum(self, vector):
-        return sum(vector)
+        
+        # Questões 5 em diante
+        start = time.time()
+        soma = sum(vector)
+
+        # Questões 5 em diante
+        end = time.time()
+        print(f'Tempo de execução :{end-start}')
+
+        return soma
 
 #Para iniciar o servidor
 if __name__ == "__main__":
