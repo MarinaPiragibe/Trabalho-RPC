@@ -28,18 +28,18 @@ conn = rpyc.connect(server,18861)
 # print(conn.root.the_real_answer_though)
 
 clientVector = criaVetor()
-# print(clientVector, sum(clientVector))
+print('[CLIENTE] - Vetor criado:', clientVector)
 
 # Questões 5 em diante
 start = time.time()
 
 # Questão 4 em diante
 sumVector = conn.root.vectorSum(clientVector)
-print(f'A soma dos elementos do vetor é {sumVector}')
+print(f'[CLIENTE] - A soma dos elementos do vetor é {sumVector}')
 
 # Questões 5 em diante
 end = time.time()
-print(f'Tempo de resposta :{end-start}')
+print(f'[CLIENTE] - Tempo de resposta: {end-start}')
 
 
 # Questão 3

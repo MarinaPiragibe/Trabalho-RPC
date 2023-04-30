@@ -4,10 +4,10 @@ import rpyc
 class MyService(rpyc.Service):
 
     def on_connect(self, conn):
-        print("Cliente conectado ao Servidor!")
+        print("[SERVER] - Cliente conectado ao Servidor!")
 
     def on_disconnect(self, conn):
-        print("Cliente perdeu a conexão com o Servidor...\n")
+        print("[SERVER] - Cliente perdeu a conexão com o Servidor...\n")
 
 
     def exposed_get_answer(self): # este é um método exposto
@@ -26,7 +26,7 @@ class MyService(rpyc.Service):
 
         # Questões 5 em diante
         end = time.time()
-        print(f'Tempo de execução :{end-start}')
+        print(f'[SERVER] - Tempo de execução: {end-start}')
 
         return soma
 
