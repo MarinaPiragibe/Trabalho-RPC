@@ -6,7 +6,7 @@ from random import randint
 # Comentário para testar push do git 
 
 # Questão 4 em diante
-def criaVetor ():
+def criaVetor():
 
     tamanho = int(input('Insira o tamanho do vetor: '))
     vetor = []
@@ -20,26 +20,30 @@ if len(sys.argv) < 2:
     exit("Usage {} SERVER".format(sys.argv[0]))
 
 server = sys.argv[1]
-conn = rpyc.connect(server,18861)
+conn = rpyc.connect(server,55566)
+conn._config['sync_request_timeout'] = None
 
 # Questão 1
-# print(conn.root)
-# print(conn.root.get_answer())
-# print(conn.root.the_real_answer_though)
+print(conn._config['sync_request_timeout'], '\n')
+print(conn.root)
+print(conn.root.get_answer())
+print(conn.root.the_real_answer_though)
 
 clientVector = criaVetor()
-print('[CLIENTE] - Vetor criado:', clientVector)
+# print('[CLIENTE] - Vetor criado:', clientVector)
 
 # Questões 5 em diante
 start = time.time()
 
 # Questão 4 em diante
 sumVector = conn.root.vectorSum(clientVector)
-print(f'[CLIENTE] - A soma dos elementos do vetor é {sumVector}')
 
 # Questões 5 em diante
 end = time.time()
-print(f'[CLIENTE] - Tempo de resposta: {end-start}')
+
+print(f'[CLIENTE] - A soma dos elementos do vetor é {sumVector[0]}')
+print(f'[CLIENTE] - Tempo de resposta (espera do cliente): {end-start}')
+print(f'[CLIENTE] - Tempo para a resposta, uma vez calculada, ser passada ao cliente: {(end-start)-sumVector[1]}')
 
 
 # Questão 3

@@ -28,10 +28,10 @@ class MyService(rpyc.Service):
         end = time.time()
         print(f'[SERVER] - Tempo de execução: {end-start}')
 
-        return soma
+        return (soma, end-start)
 
-#Para iniciar o servidor
+# Para iniciar o servidor
 if __name__ == "__main__":
     from rpyc.utils.server import ThreadedServer
-    t = ThreadedServer(MyService, port=18861)
+    t = ThreadedServer(MyService, port=55565)
     t.start()
